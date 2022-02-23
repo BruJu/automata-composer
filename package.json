@@ -1,0 +1,28 @@
+{
+  "name": "@bruju/automata-composer",
+  "version": "1.0.0",
+  "description": "Basic finite state automata building by composition",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "npx mocha -r ts-node/register *.test.ts",
+    "nyc": "npx nyc mocha -r ts-node/register *.test.ts",
+    "build": "npx tsc --build",
+    "prepack": "npm run build"
+  },
+  "keywords": [],
+  "author": "Julian Bruyat <julian@bruy.at>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BruJu/automata-composer"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/mocha": "^9.1.0",
+    "mocha": "^9.2.1",
+    "nyc": "^15.1.0",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5"
+  },
+  "files": ["index.js", "index.d.ts"]
+}
