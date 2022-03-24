@@ -127,6 +127,13 @@ describe("Composition", () => {
     () => chain(),
     [""], ["a"]
   );
+
+  testAutomata(
+    "a+",
+    () => plus(unit("a")),
+    ["a", "aa", "aaaaaa"],
+    ["", "b"]
+  )
 });
 
 function testAutomata(
