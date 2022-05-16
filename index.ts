@@ -138,7 +138,33 @@ export function modifyTransitions(
         symbol: modifier(transition.symbol)
       }
     })
-  )
+  );
+}
+
+function identity<T>(t: T) { return t; }
+
+/**
+ * Inverse the automata state
+ * @param self The base automata
+ * @param modifier A function to apply to the transition names. Default value
+ * is the identity function (i.e. the transitions are not changed)
+ * @returns An automata composer that is the inverse of the original one
+ */
+export function inverse(
+  self: AutomataComposer,
+  modifier: (symbol: string) => string = identity
+): AutomataComposer {
+  return new AutomataComposer(
+    self.end,
+    self.start,
+    self.transitions.map(transition => {
+      return {
+        from: transition.to,
+        to: transition.from,
+        symbol: transition.symbol === EPSILON ? EPSILON : modifier(transition.symbol)
+      }
+    })
+  );
 }
 
 /** A transition */

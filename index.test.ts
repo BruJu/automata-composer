@@ -1,5 +1,5 @@
 import assert from "assert";
-import { AutomataComposer, unit, chain, plus, star, maybe, or, modifyTransitions, EPSILON } from ".";
+import { AutomataComposer, unit, chain, plus, star, maybe, or, modifyTransitions, EPSILON, inverse } from ".";
 
 describe("Composer", () => {
   testAutomata(
@@ -133,7 +133,30 @@ describe("Composition", () => {
     () => plus(unit("a")),
     ["a", "aa", "aaaaaa"],
     ["", "b"]
-  )
+  );
+
+  testAutomata(
+    "^(a)",
+    () => inverse(unit("a")),
+    ["a"],
+    ["", "aa", "b", "ab"]
+  );
+
+  testAutomata(
+    "^(ab)",
+    () => inverse(chain(unit("a"), unit("b"))),
+    ["ba"],
+    ["ab", "", "a", "b"]
+  );
+
+  testAutomata(
+    "^CAPS(c*d)",
+    () => inverse(chain(star(unit("c")), unit("d")),
+      (t: string) => t.toUpperCase()
+    ),
+    ["D", "DC", "DCCCCC"],
+    ["d", "dc", "dccccc", "cd", "cddddd", "CD", "CCCCCCCD"]
+  );
 });
 
 function testAutomata(

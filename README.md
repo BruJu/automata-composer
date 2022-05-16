@@ -2,7 +2,7 @@
 
 This package lets users build finite state automata by composing
 automatas with the operators `chain` (concatenation), `or` (|),
-`maybe` (?), `star` (*) and `plus` (+).
+`maybe` (?), `star` (*), `plus` (+) and `inverse` (reverse all transitions).
 
 Transitions are strings of any length and minimization is automatically applied
 when the automata is built.

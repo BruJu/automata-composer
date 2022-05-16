@@ -1,6 +1,6 @@
 {
   "name": "@bruju/automata-composer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Basic finite state automata building by composition",
   "main": "index.js",
   "types": "index.d.ts",
@@ -10,7 +10,7 @@
     "build": "npx tsc --build",
     "prepack": "npm run build"
   },
-  "keywords": [],
+  "keywords": ["Automata", "FSA"],
   "author": "Julian Bruyat <julian@bruy.at>",
   "repository": {
     "type": "git",
